@@ -1,6 +1,7 @@
 # parrotsay
 
 Inspired by [parrotsay](https://github.com/matheuss/parrotsay) and slightly overengineered. Definitely a very serious project.
+Most of the code here is taken by [Flavio's great work](https://flaviocopes.com/go-tutorial-cowsay/).
 
 ## Build, Usage...
 
