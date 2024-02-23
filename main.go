@@ -4,47 +4,18 @@
 package main
 
 import (
-	"bufio"
-	"errors"
 	"fmt"
-	"io"
 	"os"
 	"parrotsay/balloon"
 	"parrotsay/characters"
+	"parrotsay/cli"
 )
 
-func printUsage() {
-	fmt.Println("Usage: fortune | parrotsay")
-}
-
-// reads the input to the program and returns the list of input lines
-func readUserInput() ([]string, error) {
-	info, _ := os.Stdin.Stat()
-
-	// make sure there is actually an input coming from stdin
-	if info.Mode()&os.ModeCharDevice != 0 {
-		return nil, errors.New("The command is intended to work with pipes.")
-	}
-
-	// let's read those lines, shall we?
-	reader := bufio.NewReader(os.Stdin)
-	var lines []string
-
-	for {
-		line, _, err := reader.ReadLine()
-		if err != nil && err == io.EOF {
-			break
-		}
-		lines = append(lines, string(line))
-	}
-	return lines, nil
-}
-
 func main() {
-	lines, err := readUserInput()
+	lines, err := cli.ParseUserInput()
 	if err != nil {
 		fmt.Println(err.Error())
-		printUsage()
+		cli.PrintUsage()
 		os.Exit(1)
 	}
 	balloon.PrintBalloon(lines)
