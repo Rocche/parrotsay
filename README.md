@@ -41,7 +41,10 @@ fortune | parrotsay
 echo "OMG YES LET'S PARTY!" | parrotsay
 ```
 
-![image](https://github.com/Rocche/parrotsay/assets/37312278/48ebf21b-353e-440c-8476-994377f09da0)
+![image](https://github.com/Rocche/parrotsay/assets/37312278/b03d6e6f-8cc6-4a94-a9fa-2e9c8b1961cc)
+![image](https://github.com/Rocche/parrotsay/assets/37312278/1dc5d900-8871-489f-9089-fb0ddcb1f3d2)
+
+
 
 ## Architecture
 
