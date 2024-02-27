@@ -24,7 +24,6 @@ func main() {
 		fmt.Print("\033[H")
 		balloon.PrintBalloon(lines)
 		characters.DrawAnimatedParrot()
-		//characters.DrawParrot()
 		d, _ := time.ParseDuration("50ms")
 		time.Sleep(d)
 	}

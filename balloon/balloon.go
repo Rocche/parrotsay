@@ -24,6 +24,8 @@ func buildBalloon(lines []string, maxwidth int) string {
 	}
 
 	ret = append(ret, bottom)
+	ret = append(ret, strings.Repeat(" ", len(bottom)/2-1)+"\\")
+	ret = append(ret, strings.Repeat(" ", len(bottom)/2)+"\\")
 	return strings.Join(ret, "\n")
 }
 
