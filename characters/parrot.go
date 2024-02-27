@@ -2,6 +2,7 @@ package characters
 
 import "fmt"
 
+// parrot frames
 const p0 = `00000000000000000000000000000000000
 00000000000000000055535535500000000
 00000000000000000553111323500000000
@@ -262,9 +263,9 @@ const p9 = `00000000000000000000000000000000000
 05511233333333333333333333333314500
 05211111111111111111111111111114500`
 
-var ParrotFrames = []string{p0, p1, p2, p3, p4, p5, p6, p7, p8, p9}
-
-var Colors = map[string]int{
+// colors is a map with key composed by frame number as first digit and
+// color number as second digit. The value is the ANSI color value
+var colors = map[string]int{
 	"00": 0, "01": 235, "02": 245, "03": 244, "04": 217, "05": 255, "06": 0, "07": 0, "08": 0, "09": 0,
 	"10": 0, "11": 235, "12": 245, "13": 244, "14": 222, "15": 255, "16": 0, "17": 0, "18": 0, "19": 0,
 	"20": 0, "21": 235, "22": 245, "23": 244, "24": 114, "25": 255, "26": 0, "27": 0, "28": 0, "29": 0,
@@ -277,13 +278,21 @@ var Colors = map[string]int{
 	"90": 0, "91": 235, "92": 245, "93": 203, "94": 244, "95": 255, "96": 0, "97": 0, "98": 0, "99": 0,
 }
 
+// ParrotFrames is the array containing all the ordered textual frames
+// of the parrot
+var ParrotFrames = []string{p0, p1, p2, p3, p4, p5, p6, p7, p8, p9}
+
 func runeToColoredBlock(r rune, schemeNumber int) string {
+	// new line is always new line
 	if r == '\n' {
 		return "\n"
 	}
-	color, ok := Colors[fmt.Sprintf("%d%c", schemeNumber, r)]
+	color, ok := colors[fmt.Sprintf("%d%c", schemeNumber, r)]
 	if !ok {
 		color = 0
 	}
+	// print two spaces with the selected color: we print two spaces
+	// because usually the height of a character corresponds to more or less
+	// the double of the character's width
 	return fmt.Sprintf("\033[48;5;%dm  \033[0m", color)
 }
