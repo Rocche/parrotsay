@@ -20,8 +20,7 @@ func main() {
 		os.Exit(1)
 	}
 	for {
-		fmt.Print("\033[2J")
-		fmt.Print("\033[H")
+		cli.Clear()
 		balloon.PrintBalloon(lines)
 		characters.DrawAnimatedParrot()
 		d, _ := time.ParseDuration("50ms")
