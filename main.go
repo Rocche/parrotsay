@@ -9,6 +9,7 @@ import (
 	"parrotsay/balloon"
 	"parrotsay/characters"
 	"parrotsay/cli"
+	"time"
 )
 
 func main() {
@@ -18,7 +19,11 @@ func main() {
 		cli.PrintUsage()
 		os.Exit(1)
 	}
-	balloon.PrintBalloon(lines)
-	characters.DrawParrot()
-	fmt.Println()
+	for {
+		cli.Clear()
+		balloon.PrintBalloon(lines)
+		characters.DrawAnimatedParrot()
+		d, _ := time.ParseDuration("50ms")
+		time.Sleep(d)
+	}
 }
